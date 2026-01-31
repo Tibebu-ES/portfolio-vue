@@ -1,5 +1,5 @@
 export const portfolio = {
-    name: 'Your Name',
+    name: 'Tibebu E.',
     role: 'Full‑Stack Web Developer',
     headline: 'Laravel + Vue.js • Clean APIs • Fast, maintainable products',
     summary:
@@ -17,9 +17,9 @@ export const portfolio = {
         { id: 'contact', label: 'Contact' },
     ],
     links: {
-        github: 'https://github.com/<your-handle>',
-        linkedin: 'https://www.linkedin.com/in/<your-handle>/',
-        email: 'mailto:you@example.com',
+        github: 'https://github.com/Tibebu-ES',
+        linkedin: 'https://www.linkedin.com/in/tibebu-eneyew/',
+        email: 'mailto:tibebuenyew@gmail.com',
         resume: '/resume.pdf',
     },
     about:
@@ -53,57 +53,52 @@ export const portfolio = {
     ],
     projects: [
         {
-            title: 'SaaS Admin Dashboard',
+            title: 'Resource Scheduling and Booking Platform (Team2Book)',
+            description:
+                'A resource scheduling and booking platform for for clinics and hospitals. It is in production used by Canadian clinics to manage their team schedules. It basically assigns consumers to resources based on their priority and resource preferences. Notify users if there is a scheduling issue. Enable visualizing free resources and who is working where on a floor plan. ',
+            stack: ['CodeIgniter 4', 'WordPress', 'MySQL', 'Chart.js'],
+            achievements: ['Implemented robust resource scheduling app'],
+            links: {
+                demo: 'https://team2book.com'
+            },
+        },
+        {
+            title: 'SaaS Admin Dashboard (PPCAssist)',
             description:
                 'Multi-tenant admin dashboard with role-based access, audit logs, and analytics widgets.',
-            stack: ['Laravel', 'Vue 3', 'MySQL', 'Redis'],
-            achievements: ['Reduced page load time by ~40% via query optimization and caching'],
+            stack: ['Laravel', 'Livewire', 'Alpine.js', 'PostgreSQL'],
+            achievements: ['Implemented new features and fix bugs'],
             links: {
-                demo: 'https://example.com',
-                repo: 'https://github.com/<your-handle>/<repo>',
+                demo: 'https://ppcassist.com',
             },
         },
         {
-            title: 'E‑commerce API + Storefront',
+            title: 'Task Manager APP',
             description:
-                'Headless commerce setup: product catalog, cart/checkout flow, and order management.',
-            stack: ['Laravel', 'Vue 3', 'PostgreSQL'],
-            achievements: ['Implemented robust validation + error handling for smooth checkout UX'],
+                'A simple Task Management app with user authentication, task organization, and status tracking. The App allow users to create, update, delete, and categorize tasks with deadlines and priorities. Dashboard with summary ( the number of task by status and priority ) and a line chart to display the number of tasks completed in each month. ',
+            stack: ['Laravel', 'Livewire', 'Alpine.js'],
             links: {
-                demo: 'https://example.com',
-                repo: 'https://github.com/<your-handle>/<repo>',
+                repo: 'https://github.com/Tibebu-ES/task-manager',
             },
-        },
-        {
-            title: 'Internal Tooling & Automation',
-            description:
-                'Admin tooling for operations: bulk actions, CSV imports, background jobs, notifications.',
-            stack: ['Laravel', 'Queues', 'Redis'],
-            achievements: ['Cut manual ops time significantly using queued imports and status tracking'],
-            links: {
-                demo: 'https://example.com',
-                repo: 'https://github.com/<your-handle>/<repo>',
-            },
-        },
+        }
     ],
     experience: [
         {
             title: 'Full‑Stack Developer',
-            company: 'Company Name',
-            period: '2023 — Present',
+            company: '3ALogic Inc.',
+            period: '2021 — Present',
             bullets: [
-                'Built and maintained Laravel APIs consumed by Vue SPA dashboards.',
-                'Designed reusable Vue components and forms for faster feature delivery.',
-                'Improved performance by adding caching and removing N+1 queries.',
+                'Delivered features end-to-end: database schema → API → frontend UI.',
+                'Integrated Teamup Calendar.',
             ],
         },
         {
-            title: 'Web Developer',
-            company: 'Previous Company',
-            period: '2021 — 2023',
+            title: 'Laravel/Livewire Developer',
+            company: 'PPCAssist',
+            period: '2025 — Present',
             bullets: [
-                'Delivered features end-to-end: database schema → API → frontend UI.',
-                'Collaborated with product to break down requirements and estimate work.',
+                'Implement new features and fix bugs in Livewire components.',
+                'Amazon SP-API integration for syncing sellers data',
             ],
         },
     ],

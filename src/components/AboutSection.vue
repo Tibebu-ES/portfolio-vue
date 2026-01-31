@@ -9,9 +9,6 @@ defineProps({
   <div class="grid two">
     <div class="card pad">
       <p class="text">{{ about }}</p>
-      <div class="note">
-        Tip: Edit this text in <span class="kbd">src/data/portfolio.js</span>
-      </div>
     </div>
 
     <div class="card pad">

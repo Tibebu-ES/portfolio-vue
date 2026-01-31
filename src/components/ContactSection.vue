@@ -17,9 +17,6 @@ defineProps({
         <a class="btn" :href="links.linkedin" target="_blank" rel="noopener">LinkedIn</a>
       </div>
 
-      <p class="hint">
-        Prefer a form? You can add one later that posts to your Laravel API endpoint.
-      </p>
     </div>
 
     <div class="card pad">
