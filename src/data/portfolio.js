@@ -25,7 +25,7 @@ export const portfolio = {
     about:
         "I'm a full-stack developer focused on Laravel and Vue.js. I enjoy turning fuzzy requirements into clear, scalable solutions—whether that’s building an API, designing a dashboard, or improving performance in production.",
     facts: [
-        { label: 'Location', value: 'Remote / Your City' },
+        { label: 'Location', value: 'Remote / Ethiopia' },
         { label: 'Availability', value: 'Open to opportunities' },
         { label: 'Focus', value: 'Laravel + Vue.js' },
     ],
