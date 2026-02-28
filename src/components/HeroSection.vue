@@ -1,4 +1,6 @@
 <script setup>
+import { motion } from "motion-v";
+import myPhoto from '@/assets/profile.png'
 defineProps({
   name: { type: String, required: true },
   role: { type: String, required: true },
@@ -11,6 +13,36 @@ defineProps({
 
 <template>
   <section id="top" class="hero">
+    <!-- Profile Image -->
+    <div class="flex justify-center p-4">
+      <div class="relative w-48 h-48 flex items-center justify-center">
+        <!-- Profile Image -->
+        <img
+            :src="myPhoto"
+            alt="Profile"
+            class="w-40 h-40 rounded-full object-cover z-10"
+        />
+
+        <!-- Rotating Dashed Circle -->
+        <svg
+            class="absolute w-full h-full"
+            viewBox="0 0 200 200"
+        >
+          <motion.circle
+              cx="100"
+              cy="100"
+              r="90"
+              stroke="#3b82f6"
+              stroke-width="3"
+              stroke-dasharray="10 10"
+              fill="transparent"
+              :animate="{ rotate: 360 }"
+              :transition="{ repeat: Infinity, ease: 'linear', duration: 40 }"
+              style="transform-origin: 50% 50%;"
+          />
+        </svg>
+      </div>
+    </div>
     <div class="grid two">
       <div class="card pad hero-card">
         <p class="badge">
@@ -61,6 +93,23 @@ defineProps({
 <style scoped>
 .hero {
   padding-top: 10px;
+}
+
+.profile-photo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 9999px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid var(--panel-strong);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05);
 }
 
 .hero-card {
