@@ -1,5 +1,6 @@
 <script setup>
-import { motion } from "motion-v";
+import {motion} from "motion-v";
+import {Mail, Github, Linkedin} from "lucide-vue-next";
 import myPhoto from '@/assets/profile.png'
 defineProps({
   name: { type: String, required: true },
@@ -46,11 +47,16 @@ defineProps({
     <div class="grid two">
       <div class="card pad hero-card">
         <p class="badge">
-          <span aria-hidden="true">●</span>
+          <!-- Blinking Dot -->
+          <motion.div
+              class="dot "
+              :animate="{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }"
+              :transition="{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }"
+          />
           Available for Laravel + Vue work
         </p>
 
-        <h1 class="h1">
+        <h1 class="h1 font-bold">
           {{ name }}
           <span class="sub">{{ role }}</span>
         </h1>
@@ -59,9 +65,9 @@ defineProps({
         <p class="summary">{{ summary }}</p>
 
         <div class="cta">
-          <a class="btn primary" :href="links.email">Contact</a>
-          <a class="btn" :href="links.github" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" :href="links.linkedin" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn primary" :href="links.email"><Mail /> Contact</a>
+          <a class="btn" :href="links.github" target="_blank" rel="noopener"><Github />GitHub</a>
+          <a class="btn" :href="links.linkedin" target="_blank" rel="noopener"><Linkedin color="#3b82f6"/> LinkedIn</a>
         </div>
       </div>
 
@@ -93,23 +99,6 @@ defineProps({
 <style scoped>
 .hero {
   padding-top: 10px;
-}
-
-.profile-photo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 9999px;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border: 4px solid var(--panel-strong);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.profile-photo:hover {
-  transform: scale(1.05);
 }
 
 .hero-card {
@@ -152,7 +141,7 @@ defineProps({
 }
 
 .summary {
-  margin: 0 0 16px;
+  margin: 16px 0 16px 0;
   color: var(--muted);
   line-height: 1.65;
 }
@@ -161,6 +150,9 @@ defineProps({
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  font-size: 14px;
 }
 
 .list {
@@ -192,5 +184,21 @@ defineProps({
 .mini-body {
   font-size: 14px;
   color: var(--text);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.18);
+}
+
+/*for mobile  */
+@media (max-width: 640px) {
+  .cta{
+     position: unset;
+    margin-top: 32px;
+  }
 }
 </style>

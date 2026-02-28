@@ -1,4 +1,5 @@
 <script setup>
+import {Github, ExternalLink} from "lucide-vue-next";
 defineProps({
   projects: { type: Array, required: true },
 })
@@ -22,10 +23,10 @@ defineProps({
 
       <div class="links">
         <a v-if="p.links && p.links.demo" class="btn" :href="p.links.demo" target="_blank" rel="noopener">
-          Live
+          <ExternalLink/>  Live
         </a>
         <a v-if="p.links && p.links.repo" class="btn" :href="p.links.repo" target="_blank" rel="noopener">
-          Code
+         <Github /> Code
         </a>
       </div>
     </article>

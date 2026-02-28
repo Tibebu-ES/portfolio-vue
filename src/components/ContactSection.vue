@@ -1,4 +1,5 @@
 <script setup>
+import {Mail, Github, Linkedin} from "lucide-vue-next";
 defineProps({
   contact: { type: Object, required: true },
   links: { type: Object, required: true },
@@ -12,9 +13,9 @@ defineProps({
       <p class="text">{{ contact.blurb }}</p>
 
       <div class="cta">
-        <a class="btn primary" :href="links.email">{{ contact.primaryCtaLabel }}</a>
-        <a class="btn" :href="links.github" target="_blank" rel="noopener">{{ contact.secondaryCtaLabel }}</a>
-        <a class="btn" :href="links.linkedin" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn primary" :href="links.email"><Mail/>{{ contact.primaryCtaLabel }}</a>
+        <a class="btn" :href="links.github" target="_blank" rel="noopener"><Github/>{{ contact.secondaryCtaLabel }}</a>
+        <a class="btn" :href="links.linkedin" target="_blank" rel="noopener"><Linkedin color="#3b82f6"/>LinkedIn</a>
       </div>
 
     </div>

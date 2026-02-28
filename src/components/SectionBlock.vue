@@ -1,4 +1,5 @@
 <script setup>
+import { motion } from "motion-v";
 defineProps({
   id: { type: String, required: true },
   title: { type: String, required: true },
@@ -8,8 +9,15 @@ defineProps({
 <template>
   <section :id="id" class="section">
     <div class="head">
-      <h2 class="title">{{ title }}</h2>
-      <div class="line" aria-hidden="true" />
+      <h2 class="title font-bold">{{ title }}</h2>
+      <motion.div
+        class="line"
+        aria-hidden="true"
+        :initial="{ scaleX: 0 }"
+        :whileInView="{ scaleX: 1 }"
+        :transition="{ duration: 1.2, ease: 'easeOut' }"
+        :viewport="{ once: true }"
+      />
     </div>
 
     <div class="content">

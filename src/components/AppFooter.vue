@@ -1,4 +1,5 @@
 <script setup>
+import {Mail, Github, Linkedin} from "lucide-vue-next";
 defineProps({
   name: { type: String, required: true },
   links: { type: Object, required: true },
@@ -18,9 +19,9 @@ function year() {
       </div>
 
       <div class="right">
-        <a class="link" :href="links.github" target="_blank" rel="noopener">GitHub</a>
-        <a class="link" :href="links.linkedin" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="link" :href="links.email">Email</a>
+        <a class="link" :href="links.github" target="_blank" rel="noopener"><Github/></a>
+        <a class="link" :href="links.linkedin" target="_blank" rel="noopener"><Linkedin color="#3b82f6"/></a>
+        <a class="link" :href="links.email"><Mail /></a>
       </div>
     </div>
   </footer>

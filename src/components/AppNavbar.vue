@@ -1,4 +1,5 @@
 <script setup>
+import {motion} from "motion-v";
 defineProps({
   name: { type: String, required: true },
   role: { type: String, required: true },
@@ -19,7 +20,10 @@ function scrollToId(id) {
   <header class="nav-wrap">
     <div class="nav container">
       <a class="brand" href="#" @click.prevent="scrollToId('top')">
-        <div class="dot" aria-hidden="true" />
+        <motion.div class="dot" aria-hidden="true"
+             :animate="{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }"
+             :transition="{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }"
+        />
         <div class="brand-text">
           <strong class="name">{{ name }}</strong>
           <span class="role">{{ role }}</span>
