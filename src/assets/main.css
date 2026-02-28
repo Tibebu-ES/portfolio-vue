@@ -156,3 +156,10 @@ a {
 .card.pad {
     padding: 18px;
 }
+
+/*for mobile  */
+@media (max-width: 640px) {
+    .btn {
+        padding: 8px 10px;
+    }
+}

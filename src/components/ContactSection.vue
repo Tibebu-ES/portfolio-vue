@@ -13,8 +13,8 @@ defineProps({
       <p class="text">{{ contact.blurb }}</p>
 
       <div class="cta">
-        <a class="btn primary" :href="links.email"><Mail/>{{ contact.primaryCtaLabel }}</a>
-        <a class="btn" :href="links.github" target="_blank" rel="noopener"><Github/>{{ contact.secondaryCtaLabel }}</a>
+        <a class="btn primary" :href="links.email"><Mail/>E-mail</a>
+        <a class="btn" :href="links.github" target="_blank" rel="noopener"><Github/>GitHub</a>
         <a class="btn" :href="links.linkedin" target="_blank" rel="noopener"><Linkedin color="#3b82f6"/>LinkedIn</a>
       </div>
 
@@ -52,6 +52,7 @@ defineProps({
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  font-size: 14px;
 }
 
 .hint {

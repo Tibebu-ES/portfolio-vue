@@ -52,7 +52,6 @@ function year() {
 
 .right {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
@@ -60,9 +59,6 @@ function year() {
 .link {
   color: var(--muted);
   padding: 8px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--panel);
 }
 
 .link:hover {
