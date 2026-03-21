@@ -12,13 +12,17 @@ const getInitials = (title) => {
     .toUpperCase()
     .slice(0, 2);
 }
+
+const getImageUrl = (name) => {
+  return new URL(`../assets/projects/${name}`, import.meta.url).href;
+}
 </script>
 
 <template>
   <div class="grid three">
     <article v-for="(p, idx) in projects" :key="idx" class="card project">
       <div v-if="p.cover_photo" class="cover">
-        <img :src="`/src/assets/projects/${p.cover_photo}`" :alt="p.title" />
+        <img :src="getImageUrl(p.cover_photo)" :alt="p.title" />
       </div>
       <div v-else class="cover initials">
         <span>{{ getInitials(p.title) }}</span>
