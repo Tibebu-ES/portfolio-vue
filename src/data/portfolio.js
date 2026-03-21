@@ -61,6 +61,7 @@ export const portfolio = {
             links: {
                 demo: 'https://team2book.com'
             },
+            cover_photo: 'team2book.png',
         },
         {
             title: 'SaaS Admin Dashboard (PPCAssist)',
@@ -71,6 +72,7 @@ export const portfolio = {
             links: {
                 demo: 'https://ppcassist.com',
             },
+            cover_photo: 'ppcassist.png',
         },
         {
             title: 'Task Manager APP',
