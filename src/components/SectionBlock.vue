@@ -1,7 +1,7 @@
 <script setup>
 import { motion } from "motion-v";
 defineProps({
-  id: { type: String, required: true },
+  id: { type: String, required: false, default: '' },
   title: { type: String, required: true },
 })
 </script>
@@ -18,6 +18,9 @@ defineProps({
         :transition="{ duration: 1.2, ease: 'easeOut' }"
         :viewport="{ once: true }"
       />
+      <div v-if="$slots.actions" class="actions">
+        <slot name="actions" />
+      </div>
     </div>
 
     <div class="content">

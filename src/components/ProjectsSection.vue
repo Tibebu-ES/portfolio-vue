@@ -1,8 +1,16 @@
 <script setup>
 import {Github, ExternalLink} from "lucide-vue-next";
+import { useRouter } from "vue-router";
+
 defineProps({
   projects: { type: Array, required: true },
 })
+
+const router = useRouter();
+
+const openProject = (id) => {
+  router.push({ name: 'project-detail', params: { id } });
+}
 
 const getInitials = (title) => {
   return title
@@ -20,7 +28,7 @@ const getImageUrl = (name) => {
 
 <template>
   <div class="grid three">
-    <article v-for="(p, idx) in projects" :key="idx" class="card project">
+    <article v-for="(p, idx) in projects" :key="idx" class="card project pointer" @click="openProject(idx)">
       <div v-if="p.cover_photo" class="cover">
         <img :src="getImageUrl(p.cover_photo)" :alt="p.title" />
       </div>
@@ -58,6 +66,7 @@ const getImageUrl = (name) => {
   height: 100%;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 }
 
 .content {

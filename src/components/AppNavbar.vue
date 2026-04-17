@@ -1,5 +1,7 @@
 <script setup>
 import {motion} from "motion-v";
+import { useRoute, useRouter } from 'vue-router'
+
 defineProps({
   name: { type: String, required: true },
   role: { type: String, required: true },
@@ -9,17 +11,33 @@ defineProps({
 
 defineEmits(['toggle-theme'])
 
+const route = useRoute()
+const router = useRouter()
+
 function scrollToId(id) {
+  if (route.name !== 'home') {
+    router.push({ name: 'home', hash: `#${id}` })
+    return
+  }
+
   const el = document.getElementById(id)
   if (!el) return
   el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+function scrollToTop() {
+  if (route.name !== 'home') {
+    router.push({ name: 'home' })
+    return
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 </script>
 
 <template>
   <header class="nav-wrap">
     <div class="nav container">
-      <a class="brand" href="#" @click.prevent="scrollToId('top')">
+      <a class="brand" href="#" @click.prevent="scrollToTop">
         <motion.div class="dot" aria-hidden="true"
              :animate="{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }"
              :transition="{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }"

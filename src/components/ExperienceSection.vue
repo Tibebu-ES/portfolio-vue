@@ -50,4 +50,9 @@ defineProps({
   color: var(--muted);
   line-height: 1.75;
 }
+
+.list li {
+  list-style: disc;
+
+}
 </style>
