@@ -20,7 +20,7 @@ defineProps({
         <!-- Profile Image -->
         <img
             :src="myPhoto"
-            alt="Profile"
+            alt="Tibebu E. - Full-Stack Web Developer"
             class="w-40 h-40 rounded-full object-cover z-10"
         />
 

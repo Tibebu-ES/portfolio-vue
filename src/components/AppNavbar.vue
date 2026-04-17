@@ -49,15 +49,15 @@ function scrollToTop() {
       </a>
 
       <nav class="links" aria-label="Primary">
-        <button
+        <a
             v-for="s in sections"
             :key="s.id"
-            type="button"
+            :href="`#${s.id}`"
             class="navlink"
-            @click="scrollToId(s.id)"
+            @click.prevent="scrollToId(s.id)"
         >
           {{ s.label }}
-        </button>
+        </a>
       </nav>
 
       <div class="actions">
@@ -133,6 +133,8 @@ function scrollToTop() {
   border-radius: 999px;
   cursor: pointer;
   transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .navlink:hover {

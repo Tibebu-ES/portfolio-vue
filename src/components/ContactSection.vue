@@ -13,9 +13,9 @@ defineProps({
       <p class="text">{{ contact.blurb }}</p>
 
       <div class="cta">
-        <a class="btn primary" :href="links.email"><Mail/>E-mail</a>
-        <a class="btn" :href="links.github" target="_blank" rel="noopener"><Github/>GitHub</a>
-        <a class="btn" :href="links.linkedin" target="_blank" rel="noopener"><Linkedin color="#3b82f6"/>LinkedIn</a>
+        <a class="btn primary" :href="links.email" aria-label="Send an email to Tibebu E."><Mail/>E-mail</a>
+        <a class="btn" :href="links.github" target="_blank" rel="noopener" aria-label="Visit Tibebu E.'s GitHub profile"><Github/>GitHub</a>
+        <a class="btn" :href="links.linkedin" target="_blank" rel="noopener" aria-label="Visit Tibebu E.'s LinkedIn profile"><Linkedin color="#3b82f6"/>LinkedIn</a>
       </div>
 
     </div>

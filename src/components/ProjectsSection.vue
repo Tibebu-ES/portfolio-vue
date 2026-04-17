@@ -1,16 +1,9 @@
 <script setup>
 import {Github, ExternalLink} from "lucide-vue-next";
-import { useRouter } from "vue-router";
 
 defineProps({
   projects: { type: Array, required: true },
 })
-
-const router = useRouter();
-
-const openProject = (id) => {
-  router.push({ name: 'project-detail', params: { id } });
-}
 
 const getInitials = (title) => {
   return title
@@ -28,19 +21,24 @@ const getImageUrl = (name) => {
 
 <template>
   <div class="grid three">
-    <article v-for="(p, idx) in projects" :key="idx" class="card project pointer" @click="openProject(idx)">
+    <router-link
+      v-for="(p, idx) in projects"
+      :key="idx"
+      :to="{ name: 'project-detail', params: { id: idx } }"
+      class="card project"
+    >
       <div v-if="p.cover_photo" class="cover">
-        <img :src="getImageUrl(p.cover_photo)" :alt="p.title" />
+        <img :src="getImageUrl(p.cover_photo)" :alt="p.title" loading="lazy" />
       </div>
       <div v-else class="cover initials">
         <span>{{ getInitials(p.title) }}</span>
       </div>
 
       <div class="links">
-        <a v-if="p.links && p.links.demo" class="cursor-pointer" :href="p.links.demo" target="_blank" rel="noopener">
+        <a v-if="p.links && p.links.demo" class="cursor-pointer" :href="p.links.demo" target="_blank" rel="noopener" @click.stop>
           <ExternalLink/>
         </a>
-        <a v-if="p.links && p.links.repo" class="cursor-pointer" :href="p.links.repo" target="_blank" rel="noopener">
+        <a v-if="p.links && p.links.repo" class="cursor-pointer" :href="p.links.repo" target="_blank" rel="noopener" @click.stop>
          <Github />
         </a>
       </div>
@@ -55,7 +53,7 @@ const getImageUrl = (name) => {
 
         <p class="desc">{{ p.description }}</p>
       </div>
-    </article>
+    </router-link>
   </div>
 </template>
 
@@ -67,6 +65,8 @@ const getImageUrl = (name) => {
   overflow: hidden;
   position: relative;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .content {

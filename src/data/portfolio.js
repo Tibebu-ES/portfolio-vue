@@ -53,7 +53,7 @@ export const portfolio = {
     ],
     projects: [
         {
-            title: 'Resource Scheduling and Booking Platform (Team2Book)',
+            title: 'Team2Book',
             description:
                 'A resource scheduling and booking platform for for clinics and hospitals. It is in production used by Canadian clinics to manage their team schedules. It basically assigns consumers to resources based on their priority and resource preferences. Notify users if there is a scheduling issue. Enable visualizing free resources and who is working where on a floor plan. ',
             stack: ['CodeIgniter 4', 'WordPress', 'MySQL', 'Chart.js'],
@@ -64,7 +64,7 @@ export const portfolio = {
             cover_photo: 'team2book.png',
         },
         {
-            title: 'SaaS Admin Dashboard (PPCAssist)',
+            title: 'PPCAssist',
             description:
                 'Multi-tenant admin dashboard with role-based access, audit logs, and analytics widgets.',
             stack: ['Laravel', 'Livewire', 'Alpine.js', 'PostgreSQL'],
