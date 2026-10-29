@@ -21,23 +21,28 @@ import { portfolio } from '@/data/portfolio.js'
       :links="portfolio.links"
     />
 
-    <SectionBlock id="about" title="About">
+    <SectionBlock id="about" index="01" title="A bit about me">
       <AboutSection :about="portfolio.about" :facts="portfolio.facts" />
     </SectionBlock>
 
-    <SectionBlock id="skills" title="Skills">
+    <SectionBlock id="skills" index="02" title="Skills & toolkit">
       <SkillsSection :skill-groups="portfolio.skillGroups" />
     </SectionBlock>
 
-    <SectionBlock id="projects" title="Projects">
+    <SectionBlock
+      id="projects"
+      index="03"
+      title="Selected work"
+      subtitle="Production apps and side projects I've designed, built, or helped ship."
+    >
       <ProjectsSection :projects="portfolio.projects" />
     </SectionBlock>
 
-    <SectionBlock id="experience" title="Experience">
+    <SectionBlock id="experience" index="04" title="Experience">
       <ExperienceSection :experience="portfolio.experience" />
     </SectionBlock>
 
-    <SectionBlock id="contact" title="Contact">
+    <SectionBlock id="contact" index="05" title="Get in touch">
       <ContactSection :contact="portfolio.contact" :links="portfolio.links" />
     </SectionBlock>
   </main>

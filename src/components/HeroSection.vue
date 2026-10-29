@@ -1,7 +1,8 @@
 <script setup>
-import {motion} from "motion-v";
-import {Mail, Github, Linkedin} from "lucide-vue-next";
+import { motion } from 'motion-v'
+import { Mail, Github, Linkedin, ArrowRight, Server, LayoutDashboard, Database } from 'lucide-vue-next'
 import myPhoto from '@/assets/profile.png'
+
 defineProps({
   name: { type: String, required: true },
   role: { type: String, required: true },
@@ -10,195 +11,297 @@ defineProps({
   highlights: { type: Array, required: true },
   links: { type: Object, required: true },
 })
+
+const pillars = [
+  { title: 'Backend', body: 'Laravel, APIs, queues, auth, caching', icon: Server },
+  { title: 'Frontend', body: 'Vue 3, dashboards, forms, UX polish', icon: LayoutDashboard },
+  { title: 'Data', body: 'MySQL/Postgres, indexing, performance', icon: Database },
+]
+
+const ease = [0.22, 1, 0.36, 1]
+const rise = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, delay, ease },
+})
 </script>
 
 <template>
   <section id="top" class="hero">
-    <!-- Profile Image -->
-    <div class="flex justify-center p-4">
-      <div class="relative w-48 h-48 flex items-center justify-center">
-        <!-- Profile Image -->
-        <img
-            :src="myPhoto"
-            alt="Tibebu E. - Full-Stack Web Developer"
-            class="w-40 h-40 rounded-full object-cover z-10"
-        />
+    <div class="hero-grid">
+      <div class="intro">
+        <motion.div v-bind="rise(0)">
+          <span class="badge"><span class="status-dot" /> Available for Laravel + Vue work</span>
+        </motion.div>
 
-        <!-- Rotating Dashed Circle -->
-        <svg
-            class="absolute w-full h-full"
-            viewBox="0 0 200 200"
+        <motion.h1 class="h1" v-bind="rise(0.08)">
+          Hi, I'm {{ name }}<br />
+          <span class="gradient-text">{{ role }}</span>
+        </motion.h1>
+
+        <motion.p class="headline" v-bind="rise(0.16)">{{ headline }}</motion.p>
+        <motion.p class="summary" v-bind="rise(0.22)">{{ summary }}</motion.p>
+
+        <motion.div class="cta" v-bind="rise(0.3)">
+          <a class="btn primary" :href="links.email"><Mail /> Get in touch</a>
+          <a class="btn" href="#projects">View work <ArrowRight /></a>
+          <div class="socials">
+            <a class="social" :href="links.github" target="_blank" rel="noopener" aria-label="GitHub"><Github /></a>
+            <a class="social" :href="links.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><Linkedin /></a>
+          </div>
+        </motion.div>
+      </div>
+
+      <motion.div
+        class="portrait-wrap"
+        :initial="{ opacity: 0, scale: 0.94 }"
+        :animate="{ opacity: 1, scale: 1 }"
+        :transition="{ duration: 0.9, delay: 0.15, ease }"
+      >
+        <div class="portrait">
+          <div class="ring" aria-hidden="true" />
+          <img :src="myPhoto" alt="Tibebu E. - Full-Stack Web Developer" />
+        </div>
+        <motion.div
+          class="float-chip chip-a"
+          :animate="{ y: [0, -8, 0] }"
+          :transition="{ duration: 5, repeat: Infinity, ease: 'easeInOut' }"
         >
-          <motion.circle
-              cx="100"
-              cy="100"
-              r="90"
-              stroke="#3b82f6"
-              stroke-width="3"
-              stroke-dasharray="10 10"
-              fill="transparent"
-              :animate="{ rotate: 360 }"
-              :transition="{ repeat: Infinity, ease: 'linear', duration: 40 }"
-              style="transform-origin: 50% 50%;"
-          />
-        </svg>
-      </div>
+          <span class="dot-l" /> Laravel
+        </motion.div>
+        <motion.div
+          class="float-chip chip-b"
+          :animate="{ y: [0, 8, 0] }"
+          :transition="{ duration: 6, repeat: Infinity, ease: 'easeInOut' }"
+        >
+          <span class="dot-v" /> Vue.js
+        </motion.div>
+      </motion.div>
     </div>
-    <div class="grid two">
-      <div class="card pad hero-card">
-        <p class="badge">
-          <!-- Blinking Dot -->
-          <motion.div
-              class="dot "
-              :animate="{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }"
-              :transition="{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }"
-          />
-          Available for Laravel + Vue work
-        </p>
 
-        <h1 class="h1 font-bold">
-          {{ name }}
-          <span class="sub">{{ role }}</span>
-        </h1>
-
-        <p class="headline">{{ headline }}</p>
-        <p class="summary">{{ summary }}</p>
-
-        <div class="cta">
-          <a class="btn primary" :href="links.email"><Mail /> Contact</a>
-          <a class="btn" :href="links.github" target="_blank" rel="noopener"><Github />GitHub</a>
-          <a class="btn" :href="links.linkedin" target="_blank" rel="noopener"><Linkedin color="#3b82f6"/> LinkedIn</a>
+    <div class="pillars">
+      <motion.article
+        v-for="(p, idx) in pillars"
+        :key="p.title"
+        class="card pad pillar hoverable"
+        v-bind="rise(0.4 + idx * 0.08)"
+      >
+        <span class="icon-tile"><component :is="p.icon" /></span>
+        <div>
+          <h3 class="pillar-title">{{ p.title }}</h3>
+          <p class="pillar-body">{{ highlights[idx] || p.body }}</p>
         </div>
-      </div>
-
-      <div class="card pad hero-card">
-        <h3 class="h3">What I do best</h3>
-        <ul class="list">
-          <li v-for="(h, idx) in highlights" :key="idx">{{ h }}</li>
-        </ul>
-
-        <div class="mini">
-          <div class="mini-card">
-            <div class="mini-title">Backend</div>
-            <div class="mini-body">Laravel, APIs, queues, auth, caching</div>
-          </div>
-          <div class="mini-card">
-            <div class="mini-title">Frontend</div>
-            <div class="mini-body">Vue 3, dashboards, forms, UX polish</div>
-          </div>
-          <div class="mini-card">
-            <div class="mini-title">Data</div>
-            <div class="mini-body">MySQL/Postgres, indexing, performance</div>
-          </div>
-        </div>
-      </div>
+      </motion.article>
     </div>
   </section>
 </template>
 
 <style scoped>
 .hero {
-  padding-top: 10px;
+  padding: 56px 0 24px;
 }
 
-.hero-card {
-  position: relative;
-  overflow: hidden;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 48px;
+  align-items: center;
 }
 
-.hero-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: radial-gradient(600px 220px at 10% 0%, rgba(124, 92, 255, 0.22), transparent 60%);
-  pointer-events: none;
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
 }
 
 .h1 {
-  margin: 14px 0 8px;
-  font-size: 34px;
-  line-height: 1.1;
-}
-
-.sub {
-  display: block;
-  font-size: 14px;
-  margin-top: 8px;
-  color: var(--muted);
-  font-weight: 600;
-  letter-spacing: 0.2px;
-}
-
-.h3 {
-  margin: 0 0 12px;
-  font-size: 16px;
+  margin: 0;
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
 }
 
 .headline {
-  margin: 0 0 10px;
-  font-size: 16px;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 14px;
   color: var(--text);
+  opacity: 0.85;
 }
 
 .summary {
-  margin: 16px 0 16px 0;
+  margin: 0;
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.7;
   color: var(--muted);
-  line-height: 1.65;
 }
 
 .cta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
-  position: absolute;
-  bottom: 20px;
-  font-size: 14px;
+  margin-top: 6px;
 }
 
-.list {
-  margin: 0;
-  padding-left: 18px;
-  color: var(--muted);
-  line-height: 1.7;
+.socials {
+  display: flex;
+  gap: 6px;
+  margin-left: 4px;
 }
 
-.mini {
-  margin-top: 14px;
+.social {
   display: grid;
-  gap: 10px;
-}
-
-.mini-card {
-  border: 1px solid var(--border);
-  background: var(--panel-strong);
-  border-radius: var(--radius-sm);
-  padding: 12px;
-}
-
-.mini-title {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-
-.mini-body {
-  font-size: 14px;
-  color: var(--text);
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
+  place-items: center;
+  width: 42px;
+  height: 42px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.18);
+  color: var(--muted);
+  border: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
-/*for mobile  */
+.social:hover {
+  color: var(--text);
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+.social svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* Portrait */
+.portrait-wrap {
+  position: relative;
+  justify-self: center;
+  width: min(360px, 100%);
+}
+
+.portrait {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 36px;
+  padding: 6px;
+  background: linear-gradient(var(--surface-solid), var(--surface-solid)) padding-box, var(--gradient) border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 30px 80px -30px var(--accent);
+}
+
+.ring {
+  position: absolute;
+  inset: -18px;
+  border-radius: 48px;
+  border: 1px dashed var(--border-strong);
+  pointer-events: none;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.float-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  background: color-mix(in oklab, var(--surface-solid) 85%, transparent);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+.chip-a {
+  top: 14%;
+  left: -38px;
+}
+
+.chip-b {
+  bottom: 12%;
+  right: -30px;
+}
+
+.dot-l,
+.dot-v {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.dot-l {
+  background: #ff2d20;
+}
+
+.dot-v {
+  background: #42b883;
+}
+
+/* Pillars */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 72px;
+}
+
+.pillar {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.pillar-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pillar-body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .portrait-wrap {
+    order: -1;
+    width: min(260px, 70%);
+  }
+
+  .pillars {
+    grid-template-columns: 1fr;
+    margin-top: 56px;
+  }
+}
+
 @media (max-width: 640px) {
-  .cta{
-     position: unset;
-    margin-top: 32px;
+  .hero {
+    padding-top: 28px;
+  }
+
+  .chip-a {
+    left: -24px;
+  }
+
+  .chip-b {
+    right: -20px;
   }
 }
 </style>

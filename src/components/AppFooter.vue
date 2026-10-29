@@ -1,27 +1,23 @@
 <script setup>
-import {Mail, Github, Linkedin} from "lucide-vue-next";
+import { Mail, Github, Linkedin } from 'lucide-vue-next'
+
 defineProps({
   name: { type: String, required: true },
   links: { type: Object, required: true },
 })
 
-function year() {
-  return new Date().getFullYear()
-}
+const year = new Date().getFullYear()
 </script>
 
 <template>
   <footer class="footer">
-    <div class="container inner card pad">
-      <div class="left">
-        <div class="title">{{ name }}</div>
-        <div class="muted">© {{ year() }} • Built with Vue 3 + Vite</div>
-      </div>
+    <div class="container inner">
+      <div class="muted">© {{ year }} {{ name }} · Built with Vue 3 + Vite</div>
 
       <div class="right">
-        <a class="link" :href="links.github" target="_blank" rel="noopener"><Github/></a>
-        <a class="link" :href="links.linkedin" target="_blank" rel="noopener"><Linkedin color="#3b82f6"/></a>
-        <a class="link" :href="links.email"><Mail /></a>
+        <a class="link" :href="links.github" target="_blank" rel="noopener" aria-label="GitHub"><Github /></a>
+        <a class="link" :href="links.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><Linkedin /></a>
+        <a class="link" :href="links.email" aria-label="Email"><Mail /></a>
       </div>
     </div>
   </footer>
@@ -29,7 +25,7 @@ function year() {
 
 <style scoped>
 .footer {
-  padding: 0 0 26px;
+  border-top: 1px solid var(--border);
 }
 
 .inner {
@@ -37,32 +33,42 @@ function year() {
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-}
-
-.title {
-  font-weight: 700;
-  letter-spacing: 0.2px;
+  padding: 24px 0;
 }
 
 .muted {
   color: var(--muted);
   font-size: 13px;
-  margin-top: 6px;
 }
 
 .right {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  gap: 4px;
 }
 
 .link {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
   color: var(--muted);
-  padding: 8px 10px;
+  transition: color 160ms ease, background 160ms ease;
 }
 
 .link:hover {
   color: var(--text);
-  background: var(--panel-strong);
+  background: var(--surface-2);
+}
+
+.link svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 540px) {
+  .inner {
+    flex-direction: column-reverse;
+  }
 }
 </style>

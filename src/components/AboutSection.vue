@@ -1,20 +1,25 @@
 <script setup>
+import { MapPin, Clock, Target, Sparkles } from 'lucide-vue-next'
+
 defineProps({
   about: { type: String, required: true },
   facts: { type: Array, required: true },
 })
+
+const icons = [MapPin, Clock, Target]
 </script>
 
 <template>
-  <div class="grid two">
-    <div class="card pad">
+  <div class="about">
+    <div class="card pad story">
+      <Sparkles class="spark" aria-hidden="true" />
       <p class="text">{{ about }}</p>
     </div>
 
-    <div class="card pad">
-      <h3 class="h3">Quick facts</h3>
-      <div class="facts">
-        <div v-for="(f, idx) in facts" :key="idx" class="fact">
+    <div class="facts">
+      <div v-for="(f, idx) in facts" :key="idx" class="card fact hoverable">
+        <span class="icon-tile"><component :is="icons[idx] || Sparkles" /></span>
+        <div>
           <div class="label">{{ f.label }}</div>
           <div class="value">{{ f.value }}</div>
         </div>
@@ -24,43 +29,67 @@ defineProps({
 </template>
 
 <style scoped>
+.about {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 16px;
+}
+
+.story {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 36px;
+}
+
+.spark {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+}
+
 .text {
   margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.note {
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.h3 {
-  margin: 0 0 12px;
-  font-size: 16px;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 .facts {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .fact {
-  border: 1px solid var(--border);
-  background: var(--panel-strong);
-  border-radius: var(--radius-sm);
-  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
 }
 
 .label {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  margin-bottom: 4px;
 }
 
 .value {
-  font-size: 14px;
-  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+@media (max-width: 820px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .story {
+    padding: 24px;
+  }
 }
 </style>

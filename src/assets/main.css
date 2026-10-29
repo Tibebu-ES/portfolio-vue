@@ -1,39 +1,52 @@
 @import "tailwindcss";
 
-/* Design tokens */
+/* Design tokens (dark is the default) */
 :root {
-    --bg: #0b1220;
-    --panel: rgba(255, 255, 255, 0.06);
-    --panel-strong: rgba(255, 255, 255, 0.09);
-    --text: rgba(255, 255, 255, 0.92);
-    --muted: rgba(255, 255, 255, 0.68);
-    --border: rgba(255, 255, 255, 0.14);
+    --bg: #07080c;
+    --surface: rgba(255, 255, 255, 0.035);
+    --surface-2: rgba(255, 255, 255, 0.06);
+    --surface-solid: #0e1016;
+    --text: #ededf2;
+    --muted: #9b9eae;
+    --subtle: #6b6e7e;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
 
-    --accent: #7c5cff;
-    --accent-2: #23c9ff;
+    --accent: #8b7bff;
+    --accent-2: #2dd4bf;
+    --accent-soft: rgba(139, 123, 255, 0.14);
+    --gradient: linear-gradient(120deg, #a594ff 0%, #6ee7f9 55%, #5eead4 100%);
 
-    --shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
-    --radius: 16px;
-    --radius-sm: 12px;
-    --container: 1080px;
+    --shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 24px 60px -24px rgba(0, 0, 0, 0.6);
+    --radius: 22px;
+    --radius-sm: 14px;
+    --container: 1120px;
 
-    --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial,
-    "Apple Color Emoji", "Segoe UI Emoji";
+    --font: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    color-scheme: dark;
 }
 
-/* Light theme */
 :root[data-theme='light'] {
-    --bg: #f6f8ff;
-    --panel: rgba(6, 20, 48, 0.06);
-    --panel-strong: rgba(6, 20, 48, 0.09);
-    --text: rgba(4, 14, 30, 0.92);
-    --muted: rgba(4, 14, 30, 0.66);
-    --border: rgba(4, 14, 30, 0.14);
+    --bg: #f7f7fb;
+    --surface: rgba(255, 255, 255, 0.75);
+    --surface-2: rgba(15, 18, 40, 0.04);
+    --surface-solid: #ffffff;
+    --text: #0d0f1a;
+    --muted: #555a6e;
+    --subtle: #868aa0;
+    --border: rgba(15, 18, 40, 0.08);
+    --border-strong: rgba(15, 18, 40, 0.16);
 
-    --accent: #5b46ff;
-    --accent-2: #008cff;
+    --accent: #6a55ff;
+    --accent-2: #0d9488;
+    --accent-soft: rgba(106, 85, 255, 0.1);
+    --gradient: linear-gradient(120deg, #6a55ff 0%, #2563eb 50%, #0d9488 100%);
 
-    --shadow: 0 18px 55px rgba(9, 23, 53, 0.18);
+    --shadow: 0 1px 2px rgba(15, 18, 40, 0.04), 0 20px 50px -28px rgba(15, 18, 40, 0.25);
+
+    color-scheme: light;
 }
 
 *,
@@ -42,21 +55,20 @@
     box-sizing: border-box;
 }
 
-html,
-body {
-    height: 100%;
-}
-
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
     margin: 0;
     font-family: var(--font);
     color: var(--text);
-    background:
-            var(--bg);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: background-color 300ms ease, color 300ms ease;
 }
 
 a {
@@ -64,68 +76,144 @@ a {
     text-decoration: none;
 }
 
-.container {
-    width: min(var(--container), calc(100% - 40px));
-    margin: 0 auto;
-    padding: 34px 0 72px;
-}
-
 ::selection {
-    background: rgba(124, 92, 255, 0.28);
+    background: var(--accent-soft);
+    color: var(--text);
 }
 
-.kbd {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+.container {
+    width: min(var(--container), calc(100% - 32px));
+    margin: 0 auto;
+}
+
+main.container {
+    padding: 0 0 96px;
+}
+
+/* Text helpers */
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.eyebrow {
+    font-family: var(--mono);
     font-size: 12px;
-    padding: 2px 8px;
-    border: 1px solid var(--border);
-    border-bottom-width: 2px;
-    border-radius: 10px;
-    background: var(--panel);
-    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
 }
 
+/* Buttons */
 .btn {
     display: inline-flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
     justify-content: center;
-    padding: 12px 14px;
+    padding: 11px 18px;
     border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--panel);
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
     color: var(--text);
-    transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
-    box-shadow: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    backdrop-filter: blur(8px);
+}
+
+.btn svg {
+    width: 17px;
+    height: 17px;
 }
 
 .btn:hover {
-    transform: translateY(-1px);
-    background: var(--panel-strong);
-    border-color: rgba(124, 92, 255, 0.35);
+    transform: translateY(-2px);
+    background: var(--surface-2);
+    border-color: var(--accent);
 }
 
 .btn.primary {
-    background: linear-gradient(135deg, rgba(124, 92, 255, 0.95), rgba(35, 201, 255, 0.75));
-    border-color: rgba(255, 255, 255, 0.22);
+    background: var(--text);
+    color: var(--bg);
+    border-color: transparent;
+    box-shadow: 0 10px 30px -10px var(--accent);
 }
 
 .btn.primary:hover {
-    border-color: rgba(255, 255, 255, 0.28);
+    background: var(--text);
+    box-shadow: 0 14px 40px -10px var(--accent);
 }
 
+/* Small pills */
 .badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 10px;
+    gap: 10px;
+    padding: 7px 14px 7px 10px;
     border: 1px solid var(--border);
     border-radius: 999px;
-    background: var(--panel);
+    background: var(--surface);
     color: var(--muted);
     font-size: 13px;
+    font-weight: 500;
+    backdrop-filter: blur(8px);
 }
 
+.chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.status-dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #22c55e;
+    flex-shrink: 0;
+}
+
+.status-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    background: #22c55e;
+    opacity: 0.35;
+    animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Layout */
 .grid {
     display: grid;
     gap: 16px;
@@ -140,26 +228,72 @@ a {
 }
 
 @media (max-width: 900px) {
+    .grid.three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
     .grid.two,
     .grid.three {
         grid-template-columns: 1fr;
     }
 }
 
+/* Cards */
 .card {
+    position: relative;
     border: 1px solid var(--border);
-    background: var(--panel);
+    background: var(--surface);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    backdrop-filter: blur(12px);
+    transition: border-color 200ms ease, transform 200ms ease, background 200ms ease;
 }
 
 .card.pad {
-    padding: 18px;
+    padding: 26px;
 }
 
-/*for mobile  */
+.card.hoverable:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-3px);
+}
+
+.icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid color-mix(in oklab, var(--accent) 25%, transparent);
+    flex-shrink: 0;
+}
+
+.icon-tile svg {
+    width: 20px;
+    height: 20px;
+}
+
 @media (max-width: 640px) {
-    .btn {
-        padding: 8px 10px;
+    .card.pad {
+        padding: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
