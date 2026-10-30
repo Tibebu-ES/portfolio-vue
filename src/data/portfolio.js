@@ -75,6 +75,17 @@ export const portfolio = {
             cover_photo: 'ppcassist.png',
         },
         {
+            title: 'Migraine Patients Consultation',
+            description:
+                'A comprehensive digital platform connecting patients with healthcare professionals for personalized migraine care and treatment management. ',
+            stack: ['WordPress'],
+            achievements: ['Designed and implemented the whole application'],
+            links: {
+                demo: 'https://migraineneuro.ca/',
+            },
+            cover_photo: 'migrainePatientsConsultation.png',
+        },
+        {
             title: 'Task Manager APP',
             description:
                 'A simple Task Management app with user authentication, task organization, and status tracking. The App allow users to create, update, delete, and categorize tasks with deadlines and priorities. Dashboard with summary ( the number of task by status and priority ) and a line chart to display the number of tasks completed in each month. ',
