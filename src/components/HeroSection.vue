@@ -1,6 +1,6 @@
 <script setup>
 import { motion } from 'motion-v'
-import { Mail, Github, Linkedin, ArrowRight, Server, LayoutDashboard, Database } from 'lucide-vue-next'
+import { Mail, Github, Linkedin, ArrowRight, Server, Bot, HeartPulse } from 'lucide-vue-next'
 import myPhoto from '@/assets/profile.png'
 
 defineProps({
@@ -13,9 +13,9 @@ defineProps({
 })
 
 const pillars = [
-  { title: 'Backend', body: 'Laravel, APIs, queues, auth, caching', icon: Server },
-  { title: 'Frontend', body: 'Vue 3, dashboards, forms, UX polish', icon: LayoutDashboard },
-  { title: 'Data', body: 'MySQL/Postgres, indexing, performance', icon: Database },
+  { title: 'Backend', body: 'Laravel, CodeIgniter, WordPress, REST APIs', icon: Server },
+  { title: 'AI Integration', body: 'RAG, vector stores, tool calling', icon: Bot },
+  { title: 'Healthcare', body: 'Clinic scheduling, patient portals', icon: HeartPulse },
 ]
 
 const ease = [0.22, 1, 0.36, 1]
@@ -31,7 +31,7 @@ const rise = (delay = 0) => ({
     <div class="hero-grid">
       <div class="intro">
         <motion.div v-bind="rise(0)">
-          <span class="badge"><span class="status-dot" /> Available for Laravel + Vue work</span>
+          <span class="badge"><span class="status-dot" /> Available for PHP, Laravel & AI work</span>
         </motion.div>
 
         <motion.h1 class="h1" v-bind="rise(0.08)">
@@ -60,7 +60,7 @@ const rise = (delay = 0) => ({
       >
         <div class="portrait">
           <div class="ring" aria-hidden="true" />
-          <img :src="myPhoto" alt="Tibebu E. - Full-Stack Web Developer" />
+          <img :src="myPhoto" alt="Tibebu E. - Full-Stack PHP Developer" />
         </div>
         <motion.div
           class="float-chip chip-a"

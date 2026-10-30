@@ -1,13 +1,14 @@
 export const portfolio = {
     name: 'Tibebu E.',
-    role: 'Full‑Stack Web Developer',
-    headline: 'Laravel + Vue.js • Clean APIs • Fast, maintainable products',
+    role: 'Full‑Stack PHP Developer',
+    headline: 'PHP & Laravel • AI integration • Healthcare software',
     summary:
-        'I build modern web apps with Laravel on the backend and Vue.js on the frontend. I care about clean architecture, performance, DX, and shipping features that users actually love.',
+        'I build production web apps with Laravel, CodeIgniter and WordPress, from the database and APIs to the dashboards people use every day. My recent work includes clinic scheduling platforms, patient portals, and AI support agents that answer from documentation and live app data.',
+    // Shown in the three hero cards, in order: Backend, AI Integration, Healthcare
     highlights: [
-        'Laravel REST APIs + auth + queues + notifications',
-        'Vue 3 SPA dashboards (Vite, Composition API)',
-        'MySQL/PostgreSQL, Redis, background jobs, CI basics',
+        'Laravel, CodeIgniter & WordPress: REST APIs, background jobs, role-based access',
+        'AI support agents with the Laravel AI SDK and OpenAI: RAG, vector stores, tool calling',
+        'Clinic scheduling, patient portals',
     ],
     sections: [
         { id: 'about', label: 'About' },
@@ -23,32 +24,64 @@ export const portfolio = {
         resume: '/resume.pdf',
     },
     about:
-        "I'm a full-stack developer focused on Laravel and Vue.js. I enjoy turning fuzzy requirements into clear, scalable solutions—whether that’s building an API, designing a dashboard, or improving performance in production.",
+        "I'm a full-stack PHP developer with 6+ years of experience building production web apps with Laravel, CodeIgniter and WordPress. Much of my work is healthcare software for Canadian clinics: scheduling and team-management systems, patient portals, and bilingual (English/French) platforms built around Quebec's regulatory requirements. Lately I've been adding AI to these products, building support agents with the Laravel AI SDK and OpenAI that answer from documentation (RAG) and from live app data (tool calling). I enjoy turning fuzzy requirements into clear, maintainable solutions and shipping them end to end.",
     facts: [
-        { label: 'Location', value: 'Remote / Ethiopia' },
+        { label: 'Location', value: 'Remote / Ethiopia (UTC+3)' },
+        { label: 'Experience', value: '6+ years in PHP & Laravel' },
         { label: 'Availability', value: 'Open to opportunities' },
-        { label: 'Focus', value: 'Laravel + Vue.js' },
+        { label: 'Focus', value: 'PHP / Laravel • AI integration' },
     ],
     skillGroups: [
         {
-            title: 'Backend (Laravel / PHP)',
+            title: 'Backend (PHP)',
             skills: [
                 'Laravel (REST APIs, Eloquent, Policies, Jobs/Queues)',
-                'Authentication (sessions/JWT), RBAC',
+                'CodeIgniter 4 REST APIs',
+                'WordPress plugins & Gravity Forms (custom hooks)',
+                'Livewire',
+                'Authentication & role-based access control',
                 'Testing basics (feature/unit), validation, migrations',
             ],
         },
         {
-            title: 'Frontend (Vue.js)',
-            skills: ['Vue 3 (Composition API)', 'Vite', 'State patterns, forms, component design'],
+            title: 'AI Integration',
+            skills: [
+                'Laravel AI SDK with OpenAI models',
+                'RAG with vector stores',
+                'Tool calling over application data',
+                'Domain-restricted web search',
+                'Knowledge-base management & retrieval cost control',
+            ],
+        },
+        {
+            title: 'Frontend',
+            skills: [
+                'Vue 3 (Composition API) + Vite',
+                'Livewire + Alpine.js',
+                'Dashboards',
+                'Forms & component design',
+            ],
         },
         {
             title: 'Data & Infrastructure',
-            skills: ['MySQL / PostgreSQL', 'Redis', 'Docker basics', 'Nginx/Apache basics', 'CI basics'],
+            skills: ['MySQL / PostgreSQL', 'Redis', 'Background jobs & queues', 'Docker basics', 'Nginx/Apache basics', 'CI basics'],
         },
         {
-            title: 'Product & Quality',
-            skills: ['Debugging, profiling mindset', 'UX-friendly UI building', 'Documentation & handoff'],
+            title: 'Integrations',
+            skills: [
+                'REST API design & consumption',
+                'Amazon SP-API (seller data sync)',
+                'Teamup Calendar',
+                'Third-party service integrations',
+            ],
+        },
+        {
+            title: 'Healthcare & Product',
+            skills: [
+                'Clinic scheduling & team-management systems',
+                'Patients consultation systems',
+                'Bilingual (English/French) applications',
+            ],
         },
     ],
     projects: [

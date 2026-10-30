@@ -1,12 +1,13 @@
 <script setup>
-import { MapPin, Clock, Target, Sparkles } from 'lucide-vue-next'
+import { MapPin, Briefcase, Clock, Target, Sparkles } from 'lucide-vue-next'
 
 defineProps({
   about: { type: String, required: true },
   facts: { type: Array, required: true },
 })
 
-const icons = [MapPin, Clock, Target]
+// One icon per fact, in the same order as facts in portfolio.js
+const icons = [MapPin, Briefcase, Clock, Target]
 </script>
 
 <template>

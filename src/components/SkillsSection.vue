@@ -1,11 +1,12 @@
 <script setup>
-import { Server, LayoutDashboard, Database, ShieldCheck, Sparkles } from 'lucide-vue-next'
+import { Server, Bot, LayoutDashboard, Database, Plug, ShieldCheck, Sparkles } from 'lucide-vue-next'
 
 defineProps({
   skillGroups: { type: Array, required: true },
 })
 
-const icons = [Server, LayoutDashboard, Database, ShieldCheck]
+// One icon per skill group, in the same order as skillGroups in portfolio.js
+const icons = [Server, Bot, LayoutDashboard, Database, Plug, ShieldCheck]
 </script>
 
 <template>
