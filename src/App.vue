@@ -112,7 +112,7 @@ onMounted(() => {
   opacity: 0.6;
 }
 
-:global(:root[data-theme='light']) .glow {
+:root[data-theme='light'] .glow {
   opacity: 0.18;
 }
 </style>
